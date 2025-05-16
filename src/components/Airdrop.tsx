@@ -4,7 +4,7 @@ import { PublicKey } from "@solana/web3.js";
 import Alert, { AlertType } from "./Alert";
 const BASE_URL =
   process.env.NODE_ENV == "production"
-    ? process.env.NEXT_PUBLIC_BACKEND_URL
+    ? process.env.BACKEND_URL
     : "http://localhost:3000";
 const API_URL = `${BASE_URL}/api/airdrop`;
 
