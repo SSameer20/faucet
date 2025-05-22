@@ -9,18 +9,17 @@ export async function POST(req: NextRequest) {
     console.log(`req in api`);
     const data = await req.json();
     const { publicKey } = await data;
+    if (!publicKey) {
+      throw new Error("public key is required");
+    }
 
     const ValidPublicKey = new PublicKey(publicKey);
+
     const AirDropSignature = await connection.requestAirdrop(
       ValidPublicKey,
       1 * LAMPORTS_PER_SOL
     );
 
-    console.log({
-      clusterURL: CLUSTER_API_URL.DEVNET,
-      publicKey: ValidPublicKey.toBase58(),
-      signature: AirDropSignature,
-    });
     return NextResponse.json(
       { message: `Airdropped to ${publicKey}`, signature: AirDropSignature },
       { status: 200 }
