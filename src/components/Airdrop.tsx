@@ -2,7 +2,12 @@
 import { useRef, useState } from "react";
 import { PublicKey } from "@solana/web3.js";
 import Alert, { AlertType } from "./Alert";
-const BASE_URL = process.env.BACKEND_URL || "http://localhost:3000";
+
+const BASE_URL =
+  process.env.NODE_ENV == "production"
+    ? "https://faucet-delta-eight.vercel.app/api/airdrop"
+    : "http://localhost:3000";
+
 const API_URL = `${BASE_URL}/api/airdrop`;
 
 export default function Airdrop() {
@@ -43,6 +48,7 @@ export default function Airdrop() {
     } catch (error) {
       console.log(`${error}`);
       CustomAlert(`${error}`, "error");
+      console.log([process.env.NODE_ENV, API_URL]);
     } finally {
       if (inputRef && inputRef.current) {
         inputRef.current.value = "";

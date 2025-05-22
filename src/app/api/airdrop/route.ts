@@ -6,6 +6,7 @@ const connection = new Connection(CLUSTER_API_URL.DEVNET, "confirmed");
 
 export async function POST(req: NextRequest) {
   try {
+    console.log(`req in api`);
     const data = await req.json();
     const { publicKey } = await data;
 
@@ -14,6 +15,12 @@ export async function POST(req: NextRequest) {
       ValidPublicKey,
       1 * LAMPORTS_PER_SOL
     );
+
+    console.log({
+      clusterURL: CLUSTER_API_URL.DEVNET,
+      publicKey: ValidPublicKey.toBase58(),
+      signature: AirDropSignature,
+    });
     return NextResponse.json(
       { message: `Airdropped to ${publicKey}`, signature: AirDropSignature },
       { status: 200 }
