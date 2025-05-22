@@ -5,7 +5,7 @@ import Alert, { AlertType } from "./Alert";
 
 const BASE_URL =
   process.env.NODE_ENV == "production"
-    ? "https://faucet-delta-eight.vercel.app/api/airdrop"
+    ? "https://faucet-delta-eight.vercel.app"
     : "http://localhost:3000";
 
 const API_URL = `${BASE_URL}/api/airdrop`;
