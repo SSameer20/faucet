@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Head from "next/head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,6 +25,52 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+        <title>
+          Free Solana Faucet | Instant SOL Airdrop on Devnet & Testnet
+        </title>
+        <meta
+          name="description"
+          content="Request free SOL tokens instantly from our fast and reliable Solana Faucet. Supports Devnet and Testnet. Ideal for developers testing dApps on Solana."
+        />
+        <meta
+          name="keywords"
+          content="Solana Faucet, Free SOL, SOL Airdrop, Solana Devnet, Testnet, Solana Wallet, Web3 Testnet, dApp development"
+        />
+        <meta name="author" content="Your Name" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://faucet.sameer.digital/" />
+        <meta
+          property="og:title"
+          content="Free Solana Faucet | Instant SOL Airdrop on Devnet & Testnet"
+        />
+        <meta
+          property="og:description"
+          content="Get test SOL tokens instantly for free. Our public Solana faucet supports Devnet and Testnet, perfect for blockchain developers and testers."
+        />
+        <meta
+          property="og:image"
+          content="https://faucet.sameer.digital/preview.png"
+        />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://faucet.sameer.digital/" />
+        <meta
+          property="twitter:title"
+          content="Free Solana Faucet | Instant SOL Airdrop on Devnet & Testnet"
+        />
+        <meta
+          property="twitter:description"
+          content="Request SOL in seconds from our fast and secure Solana testnet faucet. No wallet connect required — just your public key."
+        />
+        <meta
+          property="twitter:image"
+          content="https://faucet.sameer.digital/preview.png"
+        />
+      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased w-screen h-screen`}
       >
