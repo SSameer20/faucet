@@ -2,7 +2,7 @@ name: Code Check
 
 on:
   pull_request:
-    branches: [main, master, prod, dev, test]
+    branches: [prod, dev, test]
 
 jobs:
   lint-and-build:
