@@ -16,11 +16,6 @@ export async function POST(req: NextRequest) {
       1 * LAMPORTS_PER_SOL
     );
 
-    console.log({
-      clusterURL: CLUSTER_API_URL.DEVNET,
-      publicKey: ValidPublicKey.toBase58(),
-      signature: AirDropSignature,
-    });
     return NextResponse.json(
       { message: `Airdropped to ${publicKey}`, signature: AirDropSignature },
       { status: 200 }
