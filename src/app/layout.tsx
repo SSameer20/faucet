@@ -26,6 +26,9 @@ export const metadata: Metadata = {
     "Web3 Testnet",
     "dApp development",
   ],
+  icons: {
+    icon: "/favicon.png",
+  },
   authors: [{ name: "Sameer Shaik", url: "https://sameer.digital" }],
   metadataBase: new URL("https://faucet.sameer.digital"),
   openGraph: {
