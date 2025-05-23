@@ -4,7 +4,7 @@ import { PublicKey } from "@solana/web3.js";
 import Alert, { AlertType } from "./Alert";
 
 const BASE_URL =
-  process.env.NODE_ENV == "production"
+  process.env.NODE_ENV === "production"
     ? process.env.NEXT_PUBLIC_BACKEND_URL
     : "http://localhost:3000";
 
@@ -15,6 +15,7 @@ export default function Airdrop() {
   const [alertMessage, setAlertMessage] = useState<string>("");
   const [alertType, setAlertType] = useState<AlertType>("info");
   const [alertKey, setAlertKey] = useState<number>(0);
+  const [load, setLoad] = useState<boolean>(false);
 
   function CustomAlert(message: string, type: AlertType = "info") {
     setAlertMessage(message);
@@ -23,6 +24,7 @@ export default function Airdrop() {
   }
   const handleSubmitButton = async () => {
     try {
+      setLoad(true);
       if (!inputRef.current || inputRef.current.value === "") {
         return;
       }
@@ -53,11 +55,12 @@ export default function Airdrop() {
       if (inputRef && inputRef.current) {
         inputRef.current.value = "";
       }
+      setLoad(false);
     }
   };
 
   return (
-    <div className="flex gap-5">
+    <div className="flex gap-5 z-100">
       {alertMessage && (
         <Alert
           key={alertKey}
@@ -79,7 +82,7 @@ export default function Airdrop() {
         type="button"
         onClick={handleSubmitButton}
       >
-        Airdrop
+        {load ? "loading" : "Airdrop"}
       </button>
     </div>
   );

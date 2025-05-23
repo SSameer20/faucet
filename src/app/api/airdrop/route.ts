@@ -1,8 +1,10 @@
 import { CLUSTER_API_URL } from "@/utils/helper";
+import { PrismaClient } from "@prisma/client";
 import { LAMPORTS_PER_SOL, Connection, PublicKey } from "@solana/web3.js";
 import { NextRequest, NextResponse } from "next/server";
 
 const connection = new Connection(CLUSTER_API_URL.DEVNET, "confirmed");
+const client = new PrismaClient();
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,6 +21,28 @@ export async function POST(req: NextRequest) {
       ValidPublicKey,
       1 * LAMPORTS_PER_SOL
     );
+
+    let user = await client.user.findUnique({
+      where: {
+        PublicKey: publicKey,
+      },
+    });
+
+    if (!user) {
+      user = await client.user.create({
+        data: {
+          PublicKey: publicKey,
+        },
+      });
+    }
+
+    await client.airdrop.create({
+      data: {
+        PublicKey: publicKey,
+        Signature: AirDropSignature,
+        Status: true,
+      },
+    });
 
     return NextResponse.json(
       { message: `Airdropped to ${publicKey}`, signature: AirDropSignature },
