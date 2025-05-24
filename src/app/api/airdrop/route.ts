@@ -3,10 +3,9 @@ import { PrismaClient } from "@prisma/client";
 import { LAMPORTS_PER_SOL, Connection, PublicKey } from "@solana/web3.js";
 import { NextRequest, NextResponse } from "next/server";
 
-const connection = new Connection(CLUSTER_API_URL.DEVNET, "confirmed");
-const client = new PrismaClient();
-
 export async function POST(req: NextRequest) {
+  const connection = new Connection(CLUSTER_API_URL.DEVNET, "confirmed");
+  const client = new PrismaClient();
   try {
     console.log(`req in api`);
     const data = await req.json();

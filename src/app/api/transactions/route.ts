@@ -1,8 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 
-const client = new PrismaClient();
-
 export async function GET() {
+  const client = new PrismaClient();
   try {
     const transactions = await client.airdrop.findMany({
       take: 10,
