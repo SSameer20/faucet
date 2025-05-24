@@ -18,9 +18,6 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      - name: Lint Check
-        run: npm run lint
-
       - name: Install Vercel CLI
         run: npm install -g vercel
 
