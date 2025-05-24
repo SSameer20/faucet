@@ -1,12 +1,9 @@
 import { expect, test } from "@playwright/test";
 
-let baseURL = "";
-test.beforeAll("environmnet setup", () => {
-  baseURL =
-    process.env.NODE_ENV === "development"
-      ? "http://127.0.0.1:3000"
-      : process.env.BACKEND_URL || "";
-});
+const baseURL =
+  process.env.NODE_ENV === "development"
+    ? "http://127.0.0.1:3000"
+    : process.env.BACKEND_URL || "";
 
 test("airdrop with valid public key", async ({ request }) => {
   const response = await request.post(`${baseURL}/api/airdrop`, {
