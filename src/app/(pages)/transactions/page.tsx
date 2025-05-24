@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const BASE_URL =
   process.env.NODE_ENV === "production"
-    ? process.env.NEXT_PUBLIC_BACKEND_URL
+    ? process.env.NEXT_PUBLIC_BACKEND_URL || "https://faucet.sameer.digital"
     : "http://localhost:3000";
 
 const API_URL = `${BASE_URL}/api/transactions`;
@@ -26,6 +26,7 @@ export default function Page() {
 
   async function fetchData() {
     try {
+      console.log(`serving at ${API_URL}`);
       const response = await fetch(`${API_URL}`);
       const data = await response.json();
       console.log(data);
