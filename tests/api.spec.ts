@@ -1,12 +1,9 @@
 import { expect, test } from "@playwright/test";
 
-let baseURL = "";
-test.beforeAll("environmnet setup", () => {
-  baseURL =
-    process.env.NODE_ENV === "development"
-      ? "http://127.0.0.1:3000"
-      : process.env.BACKEND_URL || "";
-});
+const baseURL =
+  process.env.NODE_ENV === "development"
+    ? "http://127.0.0.1:3000"
+    : process.env.BACKEND_URL || "";
 
 test("service status code", async ({ request }) => {
   const response = await request.get(`${baseURL}/api/status`);
