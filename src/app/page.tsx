@@ -1,15 +1,8 @@
 import Airdrop from "@/components/Airdrop";
-import Link from "next/link";
 
 export default async function page() {
   return (
-    <div className="w-screen h-screen">
-      <nav className="w-full h-[10vh] flex px-10 border-amber-50  justify-between items-center">
-        <span className="cursor-pointer text-xl font-bold">Faucet</span>
-        <Link href="/transactions">
-          <span className="cursor-pointer text-xl">Transactions</span>
-        </Link>
-      </nav>
+    <div className="w-screen">
       <div className="relative w-full h-[90vh] flex flex-col items-center justify-center">
         <p className="absolute mb-50 text-6xl font-bold bg-gradient-to-r from-[#3a3636] via-[#e7e7e7] to-[#3a3636] bg-clip-text text-transparent">
           Get Free SOL Instantly
