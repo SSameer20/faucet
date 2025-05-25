@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     description:
       "Get test SOL tokens instantly for free. Our public Solana faucet supports Devnet and Testnet, perfect for blockchain developers and testers.",
     url: "https://faucet.sameer.digital",
-    siteName: "Sameer Solana Faucet",
+    siteName: "Solana Faucet",
     images: [
       {
         url: "/preview.png",
