@@ -53,9 +53,6 @@ export async function POST(req: NextRequest) {
     );
   } catch (error) {
     console.log(error);
-    return NextResponse.json(
-      { message: "Error while airdropping" },
-      { status: 400 }
-    );
+    return NextResponse.json({ message: `${error}` }, { status: 400 });
   }
 }
