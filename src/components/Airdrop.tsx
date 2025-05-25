@@ -25,7 +25,7 @@ export default function Airdrop() {
       }
       const pKey: PublicKey = new PublicKey(inputRef.current.value);
       if (!pKey) {
-        throw new Error("Invalid Input");
+        throw new Error("Invalid PublicKey");
       }
 
       const response = await fetch(API_URL, {
@@ -43,7 +43,6 @@ export default function Airdrop() {
 
       throw new Error("Failed to fetch");
     } catch (error) {
-      console.log(`${error}`);
       CustomAlert(`${error}`, "error");
       console.log([process.env.NODE_ENV, API_URL]);
     } finally {
