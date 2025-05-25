@@ -3,12 +3,7 @@
 import { useEffect, useState } from "react";
 import { formatTimeAgo } from "@/utils/helper";
 
-const BASE_URL =
-  process.env.NODE_ENV === "production"
-    ? process.env.NEXT_PUBLIC_BACKEND_URL || "https://faucet.sameer.digital"
-    : "http://localhost:3000";
-
-const API_URL = `${BASE_URL}/api/transactions`;
+const API_URL = `/api/transactions`;
 
 export type Transaction = {
   Id: string;
