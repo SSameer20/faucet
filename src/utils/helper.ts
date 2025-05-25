@@ -1,3 +1,4 @@
+import { NextRequest, NextResponse } from "next/server";
 import { CLUSTER_API_URL_TYPE } from "./types";
 
 export const CLUSTER_API_URL: CLUSTER_API_URL_TYPE = {
@@ -17,4 +18,21 @@ export function formatTimeAgo(date: Date | string) {
   if (hours > 0) return `${hours} hour${hours > 1 ? "s" : ""} ago`;
   if (minutes > 0) return `${minutes} minute${minutes > 1 ? "s" : ""} ago`;
   return `${seconds} second${seconds !== 1 ? "s" : ""} ago`;
+}
+
+export const allowedOrigins = [
+  "https://faucet-delta-eight.vercel.app",
+  "https://faucet.sameer.digital",
+];
+
+export function setCorsHeaders(req: NextRequest, res: NextResponse) {
+  const origin = req.headers.get("origin");
+  if (origin && allowedOrigins.includes(origin)) {
+    res.headers.set("Access-Control-Allow-Origin", origin);
+  }
+  res.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.headers.set("Access-Control-Allow-Headers", "Content-Type");
+  res.headers.set("Access-Control-Allow-Credentials", "true");
+
+  return res;
 }
