@@ -24,9 +24,11 @@ export async function GET() {
       },
     });
   } catch (error) {
-    console.error("Error fetching transactions:", error);
     return new Response(
-      JSON.stringify({ error: "Failed to fetch transactions" }),
+      JSON.stringify({
+        message: "Failed to fetch transactions",
+        error: `${error}`,
+      }),
       {
         status: 500,
         headers: {

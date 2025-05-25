@@ -7,10 +7,19 @@ export async function OPTIONS(req: NextRequest) {
 }
 
 export async function GET() {
-  return NextResponse.json(
-    {
-      message: `✅ All services are up and running`,
-    },
-    { status: 200 }
-  );
+  try {
+    return NextResponse.json(
+      {
+        message: `✅ All services are up and running`,
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      {
+        message: `✅ ${error}`,
+      },
+      { status: 200 }
+    );
+  }
 }
