@@ -1,4 +1,11 @@
+import { setCorsHeaders } from "@/utils/helper";
 import { PrismaClient } from "@prisma/client";
+import { NextRequest, NextResponse } from "next/server";
+
+export async function OPTIONS(req: NextRequest) {
+  const response = new NextResponse(null, { status: 204 });
+  return setCorsHeaders(req, response);
+}
 
 export async function GET() {
   const client = new PrismaClient();

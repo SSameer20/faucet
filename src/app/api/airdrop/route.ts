@@ -1,8 +1,12 @@
-import { CLUSTER_API_URL } from "@/utils/helper";
+import { CLUSTER_API_URL, setCorsHeaders } from "@/utils/helper";
 import { PrismaClient } from "@prisma/client";
 import { LAMPORTS_PER_SOL, Connection, PublicKey } from "@solana/web3.js";
 import { NextRequest, NextResponse } from "next/server";
 
+export async function OPTIONS(req: NextRequest) {
+  const response = new NextResponse(null, { status: 204 });
+  return setCorsHeaders(req, response);
+}
 export async function POST(req: NextRequest) {
   const connection = new Connection(CLUSTER_API_URL.DEVNET, "confirmed");
   const client = new PrismaClient();
