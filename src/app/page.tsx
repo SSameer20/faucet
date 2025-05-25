@@ -22,6 +22,9 @@ export default async function page() {
         <div className="absolute w-[320px] h-[440px] rounded-full blur-2xl opacity-20 bg-gradient-to-r from-transparent via-[#111468] to-transparent right-10 rotate-45" />
 
         <Airdrop />
+        <span className="absolute bottom-10">
+          ❤️ Built with love, one line at a time.
+        </span>
       </div>
     </div>
   );
