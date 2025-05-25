@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
     description:
       "Get test SOL tokens instantly for free. Our public Solana faucet supports Devnet and Testnet, perfect for blockchain developers and testers.",
     url: "https://faucet.sameer.digital",
-    siteName: "Sameer Solana Faucet",
+    siteName: "Solana Faucet",
     images: [
       {
         url: "/preview.png",
@@ -68,6 +69,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased w-screen h-screen overflow-x-hidden`}
       >
+        <nav className="w-full h-[10vh] flex px-10 border-amber-50  justify-between items-center">
+          <Link href="/">
+            <span className="cursor-pointer text-xl font-bold">Faucet</span>
+          </Link>
+          <div className="flex gap-10">
+            <Link href="/documentation">
+              <span className="cursor-pointer text-xl">Documentation</span>
+            </Link>
+            <Link href="/transactions">
+              <span className="cursor-pointer text-xl">Transactions</span>
+            </Link>
+          </div>
+        </nav>
         {children}
       </body>
     </html>
